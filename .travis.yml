@@ -29,6 +29,18 @@ jobs:
       group: edge
       virt: vm
     - os: linux
+      arch: amd64
+      env: TR_ARCH=local CLANG=1 RUN_TESTS=1
+      group: edge
+      virt: vm
+      dist: bionic
+    - os: linux
+      arch: arm64
+      env: TR_ARCH=local CLANG=1 RUN_TESTS=1
+      group: edge
+      virt: vm
+      dist: bionic
+    - os: linux
       arch: arm64-graviton2
       env: TR_ARCH=local CLANG=1 RUN_TESTS=1
       group: edge
@@ -49,11 +61,27 @@ jobs:
       env: TR_ARCH=fedora-rawhide
       dist: bionic
     - os: linux
+      arch: arm64-graviton2
+      virt: lxd
+      group: edge
+      env: TR_ARCH=fedora-rawhide
+      dist: bionic
+    - os: linux
       arch: amd64
       env: TR_ARCH=fedora-rawhide
       dist: bionic
     - os: linux
       arch: amd64
+      env: TR_ARCH=docker-test
+      dist: bionic
+    - os: linux
+      arch: arm64
+      env: TR_ARCH=docker-test
+      dist: bionic
+    - os: linux
+      arch: arm64-graviton2
+      virt: lxd
+      group: edge
       env: TR_ARCH=docker-test
       dist: bionic
     - os: linux
@@ -63,7 +91,31 @@ jobs:
       # broken on the latest bionic kernel
       dist: xenial
     - os: linux
+      arch: arm64
+      env: TR_ARCH=docker-test DIST=xenial
+      # On xenial it should be possible to test overlayfs;
+      # broken on the latest bionic kernel
+      dist: xenial
+    - os: linux
+      arch: arm64-graviton2
+      virt: lxd
+      group: edge
+      env: TR_ARCH=docker-test DIST=xenial
+      # On xenial it should be possible to test overlayfs;
+      # broken on the latest bionic kernel
+      dist: xenial
+    - os: linux
       arch: amd64
+      env: TR_ARCH=fedora-asan
+      dist: bionic
+    - os: linux
+      arch: arm64
+      env: TR_ARCH=fedora-asan
+      dist: bionic
+    - os: linux
+      arch: arm64-graviton2
+      virt: lxd
+      group: edge
       env: TR_ARCH=fedora-asan
       dist: bionic
     - env: TR_ARCH=local STREAM_TEST=1
